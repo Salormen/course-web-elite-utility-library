@@ -10,7 +10,7 @@ describe('map', () => {
     it.each([
         [null, undefined],
         [undefined, undefined],
-        [1, 2],
+        [1, mapper(1)],
     ])('if it is %s should return %s', (value, expectedResult) => {
         const maybe: Maybe<number> = buildMaybe<number>(value);
         expect(map(maybe, mapper)).toEqual(buildMaybe<number>(expectedResult));
