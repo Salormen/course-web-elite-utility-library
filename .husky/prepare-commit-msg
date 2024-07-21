@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+COMMIT_MSG_FILE=$1
+COMMIT_SOURCE=$2
+SHA1=$3
+
+# Check if the commit message is for a merge commit
+if [ "$COMMIT_SOURCE" = "merge" ]; then
+    # Read the original commit message
+    ORIGINAL_MSG=$(cat "$COMMIT_MSG_FILE")
+    
+    # Extract the branch name and repository URL from the original message
+    BRANCH_NAME=$(echo "$ORIGINAL_MSG" | grep -oP "(?<=Merge branch ')[^']+")
+    REPO_URL=$(echo "$ORIGINAL_MSG" | grep -oP "(?<=of )[^']+")
+    
+    # Construct the new commit message
+    NEW_MSG="chore: merge branch '$BRANCH_NAME' of $REPO_URL"
+    
+    # Convert the new message to lowercase
+    NEW_MSG=$(echo "$NEW_MSG" | tr '[:upper:]' '[:lower:]')
+    
+    # Write the new commit message to the commit message file
+    echo "$NEW_MSG" > "$COMMIT_MSG_FILE"
+fi
