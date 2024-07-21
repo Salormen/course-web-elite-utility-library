@@ -4,14 +4,14 @@ import { isNothing } from '../functions';
 
 describe('isNothing', () => {
     it.each([
-        [null, true],
-        [undefined, true],
-        [1, false],
-        ['', false],
-        [false, false],
-        [{}, false],
-        [[], false],
-    ])('if the value is %s should return %s', (value, expectedValue) => {
-        expect(isNothing({ value })).toBe(expectedValue);
+        { value: null, expectedResult: true },
+        { value: undefined, expectedResult: true },
+        { value: 1, expectedResult: false },
+        { value: '', expectedResult: false },
+        { value: false, expectedResult: false },
+        { value: {}, expectedResult: false },
+        { value: [], expectedResult: false },
+    ])('if the value is $value should return $expectedResult', ({ value, expectedResult }) => {
+        expect(isNothing({ value })).toBe(expectedResult);
     });
 });

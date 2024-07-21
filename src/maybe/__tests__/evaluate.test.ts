@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { evaluate } from '../functions';
-import { type Maybe, type Nothing } from '../typing';
+import { type Maybe } from '../typing';
 
 describe('evaluate', () => {
     it('should return the value if it is not nothing', () => {
@@ -11,9 +11,9 @@ describe('evaluate', () => {
     });
 
     it.each([
-        [null],
-        [undefined],
-    ])('should return the default value if the value is %s', (value: Nothing) => {
+        { value: null },
+        { value: undefined },
+    ])('should return the default value if the value is $value', ({ value }) => {
         const maybe: Maybe<number> = { value };
         const defaultValue = 2;
         expect(evaluate(maybe, defaultValue)).toBe(defaultValue);

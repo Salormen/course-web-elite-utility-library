@@ -4,14 +4,14 @@ import { isValue } from '../functions';
 
 describe('isValue', () => {
     it.each([
-        [1, true],
-        ['', true],
-        [false, true],
-        [{}, true],
-        [[], true],
-        [null, false],
-        [undefined, false],
-    ])('if the value is %s should return %s', (value, expectedValue) => {
-        expect(isValue({ value })).toBe(expectedValue);
+        { value: 1, expectedResult: true },
+        { value: '', expectedResult: true },
+        { value: false, expectedResult: true },
+        { value: {}, expectedResult: true },
+        { value: [], expectedResult: true },
+        { value: null, expectedResult: false },
+        { value: undefined, expectedResult: false },
+    ])('if the value is $value should return $expectedResult', ({ value, expectedResult }) => {
+        expect(isValue({ value })).toBe(expectedResult);
     });
 });
