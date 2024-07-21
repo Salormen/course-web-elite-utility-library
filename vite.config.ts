@@ -6,7 +6,7 @@ export default defineConfig({
     build: {
         lib: {
             entry: resolve(__dirname, 'src/index.ts'),
-            name: 'course-react-utilities',
+            name: 'course-web-elite-utility-library',
         },
         sourcemap: true,
         target: 'es6',
