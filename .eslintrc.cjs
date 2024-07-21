@@ -24,6 +24,7 @@ module.exports = {
         '@typescript-eslint/no-explicit-any': 'error',
         '@typescript-eslint/semi': ['error', 'always'],
         '@typescript-eslint/type-annotation-spacing': ['error', {}],
+        '@typescript-eslint/array-type': 'off',
         'simple-import-sort/exports': 'error',
         'simple-import-sort/imports': 'error',
     },
