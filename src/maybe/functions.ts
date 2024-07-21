@@ -1,4 +1,4 @@
-import { type Maybe, type Nothing } from './typing';
+import { type Maybe, type MaybeFunction, type Nothing } from './typing';
 
 function isNothingTypeGuard<T> (value: T | Nothing): value is Nothing {
     return value === null || value === undefined;
@@ -6,6 +6,14 @@ function isNothingTypeGuard<T> (value: T | Nothing): value is Nothing {
 
 function isValueTypeGuard<T> (value: T | Nothing): value is T {
     return !isNothingTypeGuard(value);
+}
+
+export function isValue<T> (maybe: Maybe<T>): boolean {
+    return isValueTypeGuard(maybe.value);
+}
+
+export function isNothing<T> (maybe: Maybe<T>): boolean {
+    return isNothingTypeGuard(maybe.value);
 }
 
 export function evaluate<T> (maybe: Maybe<T>, defaultValue: T): T {
