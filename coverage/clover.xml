@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1721597225355" clover="3.2.0">
-  <project timestamp="1721597225355" name="All files">
-    <metrics statements="36" coveredstatements="14" conditionals="9" coveredconditionals="6" methods="8" coveredmethods="3" elements="53" coveredelements="23" complexity="0" loc="36" ncloc="36" packages="3" files="4" classes="4"/>
+<coverage generated="1721600332068" clover="3.2.0">
+  <project timestamp="1721600332069" name="All files">
+    <metrics statements="40" coveredstatements="30" conditionals="17" coveredconditionals="13" methods="10" coveredmethods="7" elements="67" coveredelements="50" complexity="0" loc="40" ncloc="40" packages="3" files="5" classes="5"/>
     <package name="course-web-elite-utility-library">
       <metrics statements="6" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="commitlint.config.cjs" path="/home/juancho-r/proyectos/cursos/web-elite/course-web-elite-utility-library/commitlint.config.cjs">
@@ -22,37 +22,44 @@
       </file>
     </package>
     <package name="course-web-elite-utility-library.src.maybe">
-      <metrics statements="29" coveredstatements="14" conditionals="7" coveredconditionals="6" methods="6" coveredmethods="3"/>
+      <metrics statements="33" coveredstatements="30" conditionals="15" coveredconditionals="13" methods="8" coveredmethods="7"/>
+      <file name="factory.ts" path="/home/juancho-r/proyectos/cursos/web-elite/course-web-elite-utility-library/src/maybe/factory.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="6" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="7" count="7" type="stmt"/>
+        <line num="8" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+      </file>
       <file name="functions.ts" path="/home/juancho-r/proyectos/cursos/web-elite/course-web-elite-utility-library/src/maybe/functions.ts">
-        <metrics statements="28" coveredstatements="14" conditionals="6" coveredconditionals="6" methods="5" coveredmethods="3"/>
-        <line num="3" count="3" type="cond" truecount="1" falsecount="0"/>
-        <line num="4" count="3" type="cond" truecount="1" falsecount="0"/>
-        <line num="5" count="3" type="stmt"/>
-        <line num="7" count="3" type="cond" truecount="1" falsecount="0"/>
-        <line num="8" count="3" type="stmt"/>
-        <line num="9" count="3" type="stmt"/>
-        <line num="11" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="12" count="3" type="cond" truecount="1" falsecount="0"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="15" count="2" type="stmt"/>
-        <line num="16" count="2" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="27" count="1" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
+        <metrics statements="25" coveredstatements="23" conditionals="10" coveredconditionals="9" methods="6" coveredmethods="6"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="20" type="cond" truecount="1" falsecount="0"/>
+        <line num="5" count="20" type="cond" truecount="1" falsecount="0"/>
+        <line num="6" count="20" type="stmt"/>
+        <line num="8" count="13" type="cond" truecount="1" falsecount="0"/>
+        <line num="9" count="13" type="stmt"/>
+        <line num="10" count="13" type="stmt"/>
+        <line num="12" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="13" count="7" type="stmt"/>
+        <line num="14" count="7" type="stmt"/>
+        <line num="16" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="7" type="stmt"/>
+        <line num="18" count="7" type="stmt"/>
+        <line num="20" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="21" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="27" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="28" count="3" type="cond" truecount="0" falsecount="1"/>
         <line num="29" count="0" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
+        <line num="31" count="3" type="stmt"/>
+        <line num="32" count="3" type="stmt"/>
       </file>
       <file name="index.ts" path="/home/juancho-r/proyectos/cursos/web-elite/course-web-elite-utility-library/src/maybe/index.ts">
         <metrics statements="1" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>

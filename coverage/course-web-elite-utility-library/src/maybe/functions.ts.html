@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">92% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>14/28</span>
+                <span class='fraction'>23/25</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">90% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>9/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
-                <span class="quiet">Branches</span>
+                <span class="quiet">Functions</span>
                 <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>3/5</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">92% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>14/28</span>
+                <span class='fraction'>23/25</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -95,17 +95,24 @@
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -115,23 +122,13 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { type Maybe, type MaybeFunction, type Nothing } from './typing';
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { buildMaybe } from './factory';
+import { type Maybe, type Nothing } from './typing';
 &nbsp;
 function isNothingTypeGuard&lt;T&gt; (value: T | Nothing): value is Nothing {
     return value === null || value === undefined;
@@ -141,6 +138,14 @@ function isValueTypeGuard&lt;T&gt; (value: T | Nothing): value is T {
     return !isNothingTypeGuard(value);
 }
 &nbsp;
+export function isValue&lt;T&gt; (maybe: Maybe&lt;T&gt;): boolean {
+    return isValueTypeGuard(maybe.value);
+}
+&nbsp;
+export function isNothing&lt;T&gt; (maybe: Maybe&lt;T&gt;): boolean {
+    return isNothingTypeGuard(maybe.value);
+}
+&nbsp;
 export function evaluate&lt;T&gt; (maybe: Maybe&lt;T&gt;, defaultValue: T): T {
     if (isValueTypeGuard(maybe.value)) {
         return maybe.value;
@@ -148,23 +153,12 @@ export function evaluate&lt;T&gt; (maybe: Maybe&lt;T&gt;, defaultValue: T): T {
     return defaultValue;
 }
 &nbsp;
-export <span class="fstat-no" title="function not covered" >function map&lt;T, U&gt; (maybe: Maybe&lt;T&gt;, mapper: (value: T) =&gt; U): Maybe&lt;U&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    if (isValueTypeGuard(maybe.value)) {</span>
-<span class="cstat-no" title="statement not covered" >        return {</span>
-<span class="cstat-no" title="statement not covered" >            value: mapper(maybe.value),</span>
-<span class="cstat-no" title="statement not covered" >        };</span>
+export function map&lt;T, U&gt; (maybe: Maybe&lt;T&gt;, mapper: (value: T) =&gt; U): Maybe&lt;U&gt; {
+    if (isValueTypeGuard(maybe.value)) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >        return buildMaybe(mapper(maybe.value));</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
-<span class="cstat-no" title="statement not covered" >    return { value: null };</span>
-<span class="cstat-no" title="statement not covered" >}</span>
-&nbsp;
-export <span class="fstat-no" title="function not covered" >function reduce&lt;T&gt; (fns: MaybeFunction&lt;T&gt;[], initialValue: Maybe&lt;T&gt;): Maybe&lt;T&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    return fns.reduce((acc, fn) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        if (isNothingTypeGuard(acc.value)) {</span>
-<span class="cstat-no" title="statement not covered" >            return { value: null };</span>
-<span class="cstat-no" title="statement not covered" >        }</span>
-<span class="cstat-no" title="statement not covered" >        return fn(acc.value);</span>
-<span class="cstat-no" title="statement not covered" >    }, initialValue);</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+    return buildMaybe();
+}
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -172,7 +166,7 @@ export <span class="fstat-no" title="function not covered" >function reduce&lt;T
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-21T21:27:05.342Z
+                at 2024-07-21T22:18:52.060Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
