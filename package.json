@@ -8,7 +8,8 @@
     "check:types": "tsc --noEmit",
     "lint": "eslint . --ext .ts",
     "prepare": "husky install",
-    "test": "vitest run --coverage"
+    "test": "vitest run --coverage",
+    "test:watch": "vitest --watch"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
