@@ -6,7 +6,7 @@ npm run test
 npm run build
 
 git add coverage
-git commit -m "chore: update coverage"
+git commit -m "chore: update coverage 2"
 
 current_branch=$(git symbolic-ref --short HEAD)
 git push --set-upstream origin "$current_branch" --no-verify
