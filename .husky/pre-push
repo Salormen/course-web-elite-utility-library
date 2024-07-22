@@ -5,3 +5,4 @@ npm run test
 npm run build
 git add coverage
 git commit -m "chore: update coverage"
+echo "not working"
