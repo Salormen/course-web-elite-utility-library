@@ -1,18 +1,23 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 
 import { buildMaybe } from '../factory';
-import { map } from '../functions';
+import { isValueTypeGuard, map } from '../functions';
 import { type Maybe } from '../typing';
 
 describe('map', () => {
-    const mapper = (value: number): number => value + 1;
+    const mockMapper = vi.fn((value) => value + 1);
+    const someValue = 1;
 
     it.each([
         { value: null, expectedResult: undefined },
         { value: undefined, expectedResult: undefined },
-        { value: 1, expectedResult: mapper(1) },
+        { value: someValue, expectedResult: mockMapper(someValue) },
     ])('if Maybe\'s value is $value should return a Maybe object with $expectedResult as value', ({ value, expectedResult }) => {
-        const maybe: Maybe<number> = buildMaybe<number>(value);
-        expect(map(maybe, mapper)).toEqual(buildMaybe<number>(expectedResult));
+        const maybe: Maybe<number> = buildMaybe(value);
+        expect(map(maybe, mockMapper)).toEqual(buildMaybe(expectedResult));
+
+        if (isValueTypeGuard(value)) {
+            expect(mockMapper).toHaveBeenCalledWith(value);
+        }
     });
 });
