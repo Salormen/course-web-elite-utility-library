@@ -10,6 +10,11 @@ export default mergeConfig(
         test: {
             globals: true,
             environment: 'jsdom',
+            coverage: {
+                include: [
+                    'src/**/*.ts',
+                ],
+            },
         },
         // testMatch: ['**/*.test.ts'],
         // coverageConfig: {
