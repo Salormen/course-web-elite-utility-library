@@ -10,3 +10,6 @@ git commit -m "chore: update coverage"
 
 current_branch=$(git symbolic-ref --short HEAD)
 git push --set-upstream origin "$current_branch" --no-verify
+
+git fetch origin "$current_branch"
+git rebase origin/"$current_branch"
