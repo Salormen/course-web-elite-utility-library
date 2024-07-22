@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 
 import { buildMaybe } from '../factory';
-import { isValueTypeGuard, map } from '../functions';
+import { isValueType, map } from '../functions';
 import { type Maybe } from '../typing';
 
 describe('map', () => {
@@ -16,7 +16,7 @@ describe('map', () => {
         const maybe: Maybe<number> = buildMaybe(value);
         expect(map(maybe, mockMapper)).toEqual(buildMaybe(expectedResult));
 
-        if (isValueTypeGuard(value)) {
+        if (isValueType(value)) {
             expect(mockMapper).toHaveBeenCalledWith(value);
         }
     });
