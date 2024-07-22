@@ -1,10 +1,8 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
-
 import { buildMaybe } from '../factory';
 import { filter, isValueType } from '../functions';
 
 describe('filter', () => {
-    const mockPredicate = vi.fn((value) => value > 0);
+    const mockPredicate = vi.fn((value: number): boolean => value > 0);
 
     it.each([
         { value: null, expectedResult: undefined },

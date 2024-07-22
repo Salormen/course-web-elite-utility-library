@@ -1,5 +1,3 @@
-import { describe, expect, it } from 'vitest';
-
 import { evaluate } from '../functions';
 import { type Maybe } from '../typing';
 

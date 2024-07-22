@@ -1,5 +1,3 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
-
 import { buildMaybe } from '../factory';
 import { isNothing, reduce } from '../functions';
 import { type Maybe, type MaybeFunction } from '../typing';

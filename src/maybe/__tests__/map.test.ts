@@ -1,11 +1,9 @@
-import { describe, expect, it, vi } from 'vitest';
-
 import { buildMaybe } from '../factory';
 import { isValueType, map } from '../functions';
 import { type Maybe } from '../typing';
 
 describe('map', () => {
-    const mockMapper = vi.fn((value) => value + 1);
+    const mockMapper = vi.fn((value): number => value + 1);
     const someValue = 1;
 
     it.each([
