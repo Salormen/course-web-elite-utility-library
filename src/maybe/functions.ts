@@ -39,3 +39,10 @@ export function reduce<T> (initialValue: Maybe<T>, fns: MaybeFunction<T>[]): May
         return fn(acc.value);
     }, initialValue);
 }
+
+export function filter<T> (maybe: Maybe<T>, predicate: (value: T) => boolean): Maybe<T> {
+    if (isValueType(maybe.value) && predicate(maybe.value)) {
+        return maybe;
+    }
+    return buildMaybe();
+}
