@@ -8,6 +8,7 @@ describe('reduce', () => {
     const mockFn1 = vi.fn((value) => buildMaybe(value + 1));
     const mockFn2 = vi.fn((value) => buildMaybe(value * 2));
     const mockFn3 = vi.fn((value) => buildMaybe(value - 3));
+    const mockFn4 = vi.fn((value) => buildMaybe());
 
     it.each([
         { initialValue: null, functions: [mockFn1, mockFn2], expectedResult: buildMaybe() },
@@ -15,7 +16,8 @@ describe('reduce', () => {
         { initialValue: 1, functions: [mockFn1], expectedResult: buildMaybe(2) },
         { initialValue: 1, functions: [mockFn1, mockFn2], expectedResult: buildMaybe(4) },
         { initialValue: 1, functions: [mockFn1, mockFn2, mockFn3], expectedResult: buildMaybe(1) },
-        { initialValue: 0, functions: [], expectedResult: buildMaybe(0) },
+        { initialValue: 1, functions: [], expectedResult: buildMaybe(1) },
+        { initialValue: 1, functions: [mockFn1, mockFn4, mockFn2], expectedResult: buildMaybe() },
     ])('should return $expectedResult when initialValue is $initialValue and functions are $functions', ({
         initialValue, functions, expectedResult,
     }) => {
@@ -23,16 +25,20 @@ describe('reduce', () => {
         const maybeResult = reduce(maybeInitial, functions as MaybeFunction<number>[]);
         expect(maybeResult).toEqual(expectedResult);
 
-        if (isNothing(maybeInitial)) {
-            expect(mockFn1).not.toHaveBeenCalled();
-            expect(mockFn2).not.toHaveBeenCalled();
-            expect(mockFn3).not.toHaveBeenCalled();
-        } else {
-            let acc = maybeInitial;
-            functions.forEach((fn) => {
-                expect(fn).toHaveBeenCalledWith(acc.value);
-                acc = fn(acc.value);
-            });
+        let currentValue = maybeInitial;
+        let i = 0;
+
+        // validate functions are called if currentValue is not Nothing
+        for (; i < functions.length; i++) {
+            if (isNothing(currentValue)) break;
+
+            expect(functions[i]).toHaveBeenCalledWith(currentValue.value);
+            currentValue = functions[i](currentValue.value);
+        }
+
+        // validate the rest of the functions are not called
+        for (; i < functions.length; i++) {
+            expect(functions[i]).not.toHaveBeenCalled();
         }
     });
 
