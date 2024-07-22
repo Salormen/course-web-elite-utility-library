@@ -1,7 +1,7 @@
-export { buildMaybe } from './factory';
+export { buildMaybe } from '@/maybe/factory';
 export {
     evaluate,
     filter,
     map,
     reduce,
-} from './functions';
+} from '@/maybe/functions';

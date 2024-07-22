@@ -1,4 +1,4 @@
-import { isNothing } from '../functions';
+import { isNothing } from '@/maybe/functions';
 
 describe('isNothing', () => {
     it.each([

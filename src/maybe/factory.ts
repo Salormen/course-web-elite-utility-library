@@ -1,4 +1,4 @@
-import { type Maybe, type Nothing } from './typing';
+import { type Maybe, type Nothing } from '@/maybe/typing';
 
 const DEFAULT_VALUE = undefined;
 

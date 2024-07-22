@@ -1,8 +1,8 @@
 import { type Mock } from 'vitest';
 
-import { buildMaybe } from '../factory';
-import { filter, isValueType } from '../functions';
-import { type Maybe } from '../typing';
+import { buildMaybe } from '@/maybe/factory';
+import { filter, isValueType } from '@/maybe/functions';
+import { type Maybe } from '@/maybe/typing';
 
 describe('filter', () => {
     const mockPredicate: Mock<(value: number) => boolean> = vi.fn((value) => value > 0);

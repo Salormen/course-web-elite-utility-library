@@ -1,4 +1,4 @@
-import { isValue } from '../functions';
+import { isValue } from '@/maybe/functions';
 
 describe('isValue', () => {
     it.each([

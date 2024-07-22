@@ -1,5 +1,5 @@
-import { evaluate } from '../functions';
-import { type Maybe } from '../typing';
+import { evaluate } from '@/maybe/functions';
+import { type Maybe } from '@/maybe/typing';
 
 describe('evaluate', () => {
     it('should return the value if it is not nothing', () => {
