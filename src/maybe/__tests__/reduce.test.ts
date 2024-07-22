@@ -8,7 +8,7 @@ describe('reduce', () => {
     const mockFn1 = vi.fn((value) => buildMaybe(value + 1));
     const mockFn2 = vi.fn((value) => buildMaybe(value * 2));
     const mockFn3 = vi.fn((value) => buildMaybe(value - 3));
-    const mockFn4 = vi.fn((value) => buildMaybe());
+    const mockFn4 = vi.fn((_value) => buildMaybe());
 
     it.each([
         { initialValue: null, functions: [mockFn1, mockFn2], expectedResult: buildMaybe() },
