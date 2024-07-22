@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for course-web-elite-utility-library/src/maybe/functions.ts</title>
+    <title>Code coverage report for src/maybe/functions.ts</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">course-web-elite-utility-library/src/maybe</a> functions.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/maybe</a> functions.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>23/25</span>
+                <span class='fraction'>25/25</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>9/10</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>23/25</span>
+                <span class='fraction'>25/25</span>
             </div>
         
             
@@ -98,13 +98,13 @@
 <a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">20x</span>
-<span class="cline-any cline-yes">20x</span>
-<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">7x</span>
@@ -123,18 +123,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { buildMaybe } from './factory';
 import { type Maybe, type Nothing } from './typing';
 &nbsp;
-function isNothingTypeGuard&lt;T&gt; (value: T | Nothing): value is Nothing {
+export function isNothingTypeGuard&lt;T&gt; (value: T | Nothing): value is Nothing {
     return value === null || value === undefined;
 }
 &nbsp;
-function isValueTypeGuard&lt;T&gt; (value: T | Nothing): value is T {
+export function isValueTypeGuard&lt;T&gt; (value: T | Nothing): value is T {
     return !isNothingTypeGuard(value);
 }
 &nbsp;
@@ -154,9 +154,9 @@ export function evaluate&lt;T&gt; (maybe: Maybe&lt;T&gt;, defaultValue: T): T {
 }
 &nbsp;
 export function map&lt;T, U&gt; (maybe: Maybe&lt;T&gt;, mapper: (value: T) =&gt; U): Maybe&lt;U&gt; {
-    if (isValueTypeGuard(maybe.value)) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >        return buildMaybe(mapper(maybe.value));</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
+    if (isValueTypeGuard(maybe.value)) {
+        return buildMaybe(mapper(maybe.value));
+    }
     return buildMaybe();
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -166,16 +166,16 @@ export function map&lt;T, U&gt; (maybe: Maybe&lt;T&gt;, mapper: (value: T) =&gt;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-21T22:18:52.060Z
+                at 2024-07-22T00:04:52.644Z
             </div>
-        <script src="../../../prettify.js"></script>
+        <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../sorter.js"></script>
-        <script src="../../../block-navigation.js"></script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
     </body>
 </html>
     
