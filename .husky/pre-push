@@ -1,8 +1,12 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+
 npm run test
 npm run build
+
 git add coverage
 git commit -m "chore: update coverage"
-git push -n
+
+current_branch=$(git symbolic-ref --short HEAD)
+git push --set-upstream origin "$current_branch" --no-verify
