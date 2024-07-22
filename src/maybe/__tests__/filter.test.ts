@@ -1,8 +1,11 @@
+import { type Mock } from 'vitest';
+
 import { buildMaybe } from '../factory';
 import { filter, isValueType } from '../functions';
+import { type Maybe } from '../typing';
 
 describe('filter', () => {
-    const mockPredicate = vi.fn((value: number): boolean => value > 0);
+    const mockPredicate: Mock<(value: number) => boolean> = vi.fn((value) => value > 0);
 
     it.each([
         { value: null, expectedResult: undefined },
@@ -11,7 +14,7 @@ describe('filter', () => {
         { value: 0, expectedResult: undefined },
         { value: -1, expectedResult: undefined },
     ])('if Maybe\'s value is $value should return a Maybe object with $expectedResult as value', ({ value, expectedResult }) => {
-        const maybe = buildMaybe(value);
+        const maybe: Maybe<number> = buildMaybe(value);
         expect(filter(maybe, mockPredicate)).toEqual(buildMaybe(expectedResult));
 
         if (isValueType(value)) {
