@@ -23,4 +23,4 @@ dist-ssr
 # stryker temp files
 .stryker-tmp
 reports/
-coverage
+coverage/
