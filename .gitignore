@@ -20,4 +20,7 @@ dist-ssr
 *.sln
 *.sw?
 
-coverage
+# stryker temp files
+.stryker-tmp
+reports/
+coverage/

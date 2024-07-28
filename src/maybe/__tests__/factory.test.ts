@@ -14,7 +14,7 @@ describe('buildMaybe', () => {
     it.each([
         { value: null },
         { value: undefined },
-    ])('should return an object with the value $value', ({ value }) => {
+    ])('should return an object with the default value if value is $value', ({ value }) => {
         expect(buildMaybe(value)).toEqual({ value: undefined });
     });
 
