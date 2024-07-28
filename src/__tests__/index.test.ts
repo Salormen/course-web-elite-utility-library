@@ -10,4 +10,8 @@ describe('Maybe', () => {
     ])('should expose function $functionName', ({ functionName }) => {
         expect(Index).toHaveProperty(functionName);
     });
+
+    it('should expose 5 functions', () => {
+        expect(Object.keys(Index)).toHaveLength(5);
+    });
 });
