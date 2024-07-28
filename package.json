@@ -9,6 +9,7 @@
     "lint": "eslint . --ext .ts",
     "prepare": "husky install",
     "test": "vitest run --coverage",
+    "test:mutation": "stryker run",
     "test:watch": "vitest --watch"
   },
   "devDependencies": {
