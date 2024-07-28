@@ -4,9 +4,4 @@
 
 npm run test
 npm run build
-
-git add coverage
-git commit -m "chore: update coverage folder"
-
-current_branch=$(git symbolic-ref --short HEAD)
-git push --set-upstream origin "$current_branch" --no-verify
+npm run lint
