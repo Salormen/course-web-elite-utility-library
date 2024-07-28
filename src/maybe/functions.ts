@@ -1,5 +1,5 @@
-import { buildMaybe } from './factory';
-import { type Maybe, type MaybeFunction, type Nothing } from './typing';
+import { buildMaybe } from '@/maybe/factory';
+import { type Maybe, type MaybeFunction, type Nothing } from '@/maybe/typing';
 
 export function isNothingType<T> (value: T | Nothing): value is Nothing {
     return value === null || value === undefined;

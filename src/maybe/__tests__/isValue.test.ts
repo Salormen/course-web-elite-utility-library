@@ -1,6 +1,4 @@
-import { describe, expect, it } from 'vitest';
-
-import { isValue } from '../functions';
+import { isValue } from '@/maybe/functions';
 
 describe('isValue', () => {
     it.each([

@@ -1,6 +1,4 @@
-import { describe, expect, it } from 'vitest';
-
-import * as Index from '../index';
+import * as Index from '@/index';
 
 describe('Maybe', () => {
     it.each([
@@ -11,5 +9,9 @@ describe('Maybe', () => {
         { functionName: 'reduce' },
     ])('should expose function $functionName', ({ functionName }) => {
         expect(Index).toHaveProperty(functionName);
+    });
+
+    it('should expose 5 functions', () => {
+        expect(Object.keys(Index)).toHaveLength(5);
     });
 });

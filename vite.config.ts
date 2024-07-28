@@ -1,6 +1,7 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
+import viteTsConfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
     build: {
@@ -17,10 +18,11 @@ export default defineConfig({
             outDir: 'dist',
             exclude: ['**/__tests__/**/*'],
         }),
+        viteTsConfigPaths(),
     ],
     resolve: {
         alias: {
-            '@': resolve(__dirname, 'src'),
+            '@': resolve(__dirname, '/src'),
         },
     },
 });

@@ -1,8 +1,6 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
-
-import { buildMaybe } from '../factory';
-import { isNothing, reduce } from '../functions';
-import { type Maybe, type MaybeFunction } from '../typing';
+import { buildMaybe } from '@/maybe/factory';
+import { isNothing, reduce } from '@/maybe/functions';
+import { type Maybe, type MaybeFunction } from '@/maybe/typing';
 
 describe('reduce', () => {
     const mockFn1 = vi.fn((value) => buildMaybe(value + 1));

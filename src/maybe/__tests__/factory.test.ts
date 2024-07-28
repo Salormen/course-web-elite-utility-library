@@ -1,6 +1,4 @@
-import { describe, expect, it } from 'vitest';
-
-import { buildMaybe } from '../factory';
+import { buildMaybe } from '@/maybe/factory';
 
 describe('buildMaybe', () => {
     it.each([
