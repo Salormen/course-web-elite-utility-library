@@ -3,7 +3,7 @@ import { defineConfig, mergeConfig } from 'vitest/config';
 
 import viteConfig from './vite.config';
 
-// const MIN_COVERAGE = 85;
+const MIN_COVERAGE = 85;
 
 export default mergeConfig(
     viteConfig,
@@ -18,16 +18,13 @@ export default mergeConfig(
                 include: [
                     'src/**/*.ts',
                 ],
+                thresholds: {
+                    statements: MIN_COVERAGE,
+                    branches: MIN_COVERAGE,
+                    functions: MIN_COVERAGE,
+                    lines: MIN_COVERAGE,
+                },
             },
         },
-        // testMatch: ['**/*.test.ts'],
-        // coverageConfig: {
-        //     threshold: {
-        //         statements: MIN_COVERAGE,
-        //         branches: MIN_COVERAGE,
-        //         functions: MIN_COVERAGE,
-        //         lines: MIN_COVERAGE,
-        //     },
-        // },
     }),
 );
