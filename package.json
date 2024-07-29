@@ -1,8 +1,21 @@
 {
-  "name": "course-web-elite-utility-library",
-  "private": true,
+  "name": "juan-ignacio-acosta-rios-maybe-utility-library",
   "version": "0.0.0",
   "type": "module",
+  "main": "./dist/course-web-elite-utility-library.js",
+  "types": "./dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/course-web-elite-utility-library.js",
+      "exports": "./dist/course-web-elite-utility-library.js"
+    }
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc && vite build",
     "check:types": "tsc --noEmit",
@@ -35,5 +48,20 @@
     "vite-tsconfig-paths": "^4.3.2",
     "vitest": "^2.0.3"
   },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
+  "description": "A bunch of tools to deal with uncertainty",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Salormen/course-web-elite-utility-library.git"
+  },
+  "keywords": [
+    "typescript",
+    "maybe(monad)"
+  ],
+  "author": "Juan Ignacio Acosta Rios",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Salormen/course-web-elite-utility-library/issues"
+  },
+  "homepage": "https://github.com/Salormen/course-web-elite-utility-library#readme"
 }
