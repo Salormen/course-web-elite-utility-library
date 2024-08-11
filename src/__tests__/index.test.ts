@@ -8,13 +8,14 @@ describe('Maybe', () => {
         { functionName: 'filter' },
         { functionName: 'map' },
         { functionName: 'reduce' },
+        { functionName: 'toMaybeFunction' },
     ])('should expose function $functionName', ({ functionName }) => {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         expect(Index).toHaveProperty(functionName);
     });
 
-    it('should expose 5 functions', () => {
-        expect(Object.keys(Index)).toHaveLength(5);
+    it('should expose 6 functions', () => {
+        expect(Object.keys(Index)).toHaveLength(6);
     });
 
     // Shallow test to ensure that the functions are exported
@@ -46,5 +47,12 @@ describe('Maybe', () => {
         const maybe = Index.buildMaybe(1);
         const reducer = (value: number): Maybe<number> => Index.buildMaybe(value + 1);
         expect(Index.reduce(maybe, [reducer])).toEqual(Index.buildMaybe(2));
+    });
+
+    it('should expose toMaybeFunction', () => {
+        const fn = (value: number): number => value + 1;
+        const maybeFn = Index.toMaybeFunction(fn);
+
+        expect(maybeFn(1)).toEqual(Index.buildMaybe(2));
     });
 });

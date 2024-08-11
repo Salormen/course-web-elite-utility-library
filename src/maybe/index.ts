@@ -4,4 +4,5 @@ export {
     filter,
     map,
     reduce,
+    toMaybeFunction,
 } from '@/maybe/functions';
