@@ -1,6 +1,6 @@
 {
   "name": "juan-ignacio-acosta-rios-maybe-utility-library",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "main": "./dist/course-web-elite-utility-library.js",
   "types": "./dist/src/index.d.ts",
