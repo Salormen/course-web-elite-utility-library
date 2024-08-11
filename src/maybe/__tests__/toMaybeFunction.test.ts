@@ -2,14 +2,37 @@ import { buildMaybe } from '@/maybe/factory';
 import { toMaybeFunction } from '@/maybe/functions';
 import { type TypeFunction } from '@/maybe/typing';
 
-describe('toMaybeFunction', () => {
-    it('should return a MaybeFunction that wraps the given function', () => {
-        const fn = vi.fn((x: number) => x * 2);
-        const maybeFn = toMaybeFunction(fn);
+interface SomeObject { a: number };
+type SomePrimitiveType = boolean | number | string | SomeObject;
 
-        const result = maybeFn(2);
-        expect(result).toEqual(buildMaybe(4));
-        expect(fn).toHaveBeenCalledWith(2);
+describe('toMaybeFunction', () => {
+    it.each([
+        {
+            fn: (x: number): number => x * 2,
+            value: 2,
+        },
+        {
+            fn: (x: string): string => x.toUpperCase(),
+            value: 'test',
+        },
+        {
+            fn: (x: boolean): boolean => !x,
+            value: true,
+        },
+        {
+            fn: (x: SomeObject): SomeObject => ({ a: x.a + 1 }),
+            value: { a: 1 },
+        },
+    ] as {
+        fn: TypeFunction<SomePrimitiveType>
+        value: SomePrimitiveType
+    }[])('should return a MaybeFunction that wraps the given function', ({ fn, value }) => {
+        const mockFn = vi.fn(fn);
+        const maybeFn = toMaybeFunction(mockFn);
+
+        const result = maybeFn(value);
+        expect(result).toEqual(buildMaybe(fn(value)));
+        expect(mockFn).toHaveBeenCalledWith(value);
     });
 
     it('should return a MaybeFunction that returns an empty Maybe on error', () => {
@@ -25,7 +48,7 @@ describe('toMaybeFunction', () => {
 
     it('should handle functions that return undefined', () => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const fn = vi.fn(() => undefined as any);
+        const fn = vi.fn((_) => undefined as any);
         const maybeFn = toMaybeFunction(fn);
 
         const result = maybeFn(2);
@@ -35,24 +58,11 @@ describe('toMaybeFunction', () => {
 
     it('should handle functions that return null', () => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const fn: TypeFunction<number> = () => null as any;
+        const fn = vi.fn((_) => null as any);
         const maybeFn = toMaybeFunction(fn);
 
         const result = maybeFn(2);
         expect(result).toEqual(buildMaybe(null));
-    });
-
-    it('should return the correct Maybe value for different input types', () => {
-        const fn: TypeFunction<string> = (x) => x.toUpperCase();
-        const maybeFn = toMaybeFunction(fn);
-
-        expect(maybeFn('test')).toEqual(buildMaybe('TEST'));
-    });
-
-    it('should correctly wrap and return Maybe for complex objects', () => {
-        const fn: TypeFunction<{ a: number }> = (x) => ({ a: x.a + 1 });
-        const maybeFn = toMaybeFunction(fn);
-
-        expect(maybeFn({ a: 1 })).toEqual(buildMaybe({ a: 2 }));
+        expect(fn).toHaveBeenCalledWith(2);
     });
 });
