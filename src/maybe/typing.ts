@@ -5,3 +5,5 @@ export interface Maybe<T> {
 }
 
 export type MaybeFunction<T> = (value: T) => Maybe<T>;
+
+export type TypeFunction<T> = (value: T) => T;

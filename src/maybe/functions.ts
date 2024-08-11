@@ -1,5 +1,5 @@
 import { buildMaybe } from '@/maybe/factory';
-import { type Maybe, type MaybeFunction, type Nothing } from '@/maybe/typing';
+import { type Maybe, type MaybeFunction, type Nothing, type TypeFunction } from '@/maybe/typing';
 
 export function isNothingType<T> (value: T | Nothing): value is Nothing {
     return value === null || value === undefined;
@@ -45,4 +45,14 @@ export function filter<T> (maybe: Maybe<T>, predicate: (value: T) => boolean): M
         return maybe;
     }
     return buildMaybe();
+}
+
+export function toMaybeFunction<T> (fn: TypeFunction<T>): MaybeFunction<T> {
+    return (value: T): Maybe<T> => {
+        try {
+            return buildMaybe(fn(value));
+        } catch (error) {
+            return buildMaybe();
+        }
+    };
 }
