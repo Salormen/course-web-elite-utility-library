@@ -4,27 +4,33 @@ import { type TypeFunction } from '@/maybe/typing';
 
 describe('toMaybeFunction', () => {
     it('should return a MaybeFunction that wraps the given function', () => {
-        const fn: TypeFunction<number> = (x) => x * 2;
+        const fn = vi.fn((x: number) => x * 2);
         const maybeFn = toMaybeFunction(fn);
 
-        expect(maybeFn(2)).toEqual(buildMaybe(4));
+        const result = maybeFn(2);
+        expect(result).toEqual(buildMaybe(4));
+        expect(fn).toHaveBeenCalledWith(2);
     });
 
-    // it('should return a MaybeFunction that returns an empty Maybe on error', () => {
-    //     const fn: TypeFunction<number> = () => {
-    //         throw new Error('Test error');
-    //     };
-    //     const maybeFn = toMaybeFunction(fn);
+    it('should return a MaybeFunction that returns an empty Maybe on error', () => {
+        const fn = vi.fn((_: number) => {
+            throw new Error('Test error');
+        });
+        const maybeFn = toMaybeFunction(fn);
 
-    //     expect(maybeFn(2)).toEqual(buildMaybe());
-    // });
+        const result = maybeFn(2);
+        expect(result).toEqual(buildMaybe());
+        expect(fn).toHaveBeenCalledWith(2);
+    });
 
     it('should handle functions that return undefined', () => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const fn: TypeFunction<number> = () => undefined as any;
+        const fn = vi.fn(() => undefined as any);
         const maybeFn = toMaybeFunction(fn);
 
-        expect(maybeFn(2)).toEqual(buildMaybe());
+        const result = maybeFn(2);
+        expect(result).toEqual(buildMaybe());
+        expect(fn).toHaveBeenCalledWith(2);
     });
 
     it('should handle functions that return null', () => {
@@ -32,7 +38,8 @@ describe('toMaybeFunction', () => {
         const fn: TypeFunction<number> = () => null as any;
         const maybeFn = toMaybeFunction(fn);
 
-        expect(maybeFn(2)).toEqual(buildMaybe(null));
+        const result = maybeFn(2);
+        expect(result).toEqual(buildMaybe(null));
     });
 
     it('should return the correct Maybe value for different input types', () => {

@@ -48,9 +48,11 @@ export function filter<T> (maybe: Maybe<T>, predicate: (value: T) => boolean): M
 }
 
 export function toMaybeFunction<T> (fn: TypeFunction<T>): MaybeFunction<T> {
-    try {
-        return (value: T): Maybe<T> => buildMaybe(fn(value));
-    } catch (error) {
-        return () => buildMaybe();
-    }
+    return (value: T): Maybe<T> => {
+        try {
+            return buildMaybe(fn(value));
+        } catch (error) {
+            return buildMaybe();
+        }
+    };
 }
