@@ -121,6 +121,22 @@ export function filter<T> (maybe: Maybe<T>, predicate: (value: T) => boolean): M
 }
 ```
 
+### toMaybeFunction
+
+Converts a regular function to a MaybeFunction. The returned function, when called, will execute the original function and wrap the result in a Maybe. If the original function throws an error, the returned function will return Nothing.
+
+```typescript
+export function toMaybeFunction<T> (fn: TypeFunction<T>): MaybeFunction<T> {
+    return (value: T): Maybe<T> => {
+        try {
+            return buildMaybe(fn(value));
+        } catch (error) {
+            return buildMaybe();
+        }
+    };
+}
+```
+
 ## Example Usage
 
 ```typescript
@@ -134,20 +150,37 @@ if (isValue(maybeValue)) {
     console.log('Value exists:', maybeValue.value);
 }
 
+
 const defaultValue = 10;
 const evaluatedValue = evaluate(maybeValue, defaultValue);
 console.log('Evaluated value:', evaluatedValue);
 
+
 const mappedValue = map(maybeValue, x => x * 2);
 console.log('Mapped value:', mappedValue);
+
 
 const reducedValue = reduce(maybeValue, [x => buildMaybe(x + 1), x => buildMaybe(x * 3)]);
 console.log('Reduced value:', reducedValue);
 
+
 const filteredValue = filter(maybeValue, x => x > 3);
 console.log('Filtered value:', filteredValue);
+
+
+// A regular function that might throw an error
+const riskyFunction = (value: number): number => {
+    if (value < 0) {
+        throw new Error('Negative value!');
+    }
+    return value * 2;
+};
+
+const safeFunction = toMaybeFunction(riskyFunction);
+
+const maybeResult1 = safeFunction(5);
+console.log('Result for 5:', maybeResult1);  // Outputs the Maybe with value 10
+
+const maybeResult2 = safeFunction(-1);
+console.log('Result for -1:', maybeResult2); // Outputs Nothing due to the error
 ```
-
-## License
-
-This library is licensed under the MIT License.
